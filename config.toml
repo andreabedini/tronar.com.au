@@ -1,0 +1,24 @@
+base_url = "https://tronar.com.au"
+title = "Tronar Red Angus"
+description = "Tronar Red Angus, a family-operated cattle stud in Beermullah, Western Australia. Discover our cattle, farm history and photographs."
+default_language = "en"
+output_dir = "dist"
+compile_sass = false
+build_search_index = false
+generate_sitemap = true
+
+[markdown]
+smart_punctuation = false
+
+[extra]
+logo = "/images/branding/tronar-logo-red-bull-black-writing.png"
+favicon = "/images/branding/tronar-jeb-favicon.png"
+email = "tronar.grazing@activ8.net.au"
+phone = "(08) 9655 3020"
+phone_href = "+61896553020"
+mobile = "0429 053 020"
+mobile_href = "+61429053020"
+contact_names = "Ross and Tracy Collard"
+address_line = "1769 Beermullah Road, West"
+locality = "Beermullah WA 6503"
+maps_url = "https://www.google.com/maps/search/?api=1&query=Tronar+Red+Angus+Beermullah"

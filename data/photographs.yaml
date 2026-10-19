@@ -1,0 +1,44 @@
+# Photographs shown on /photographs/, in this order.
+# Add a photo by copying it into static/images/photographs/ and listing it here.
+
+# The herd
+- title: Tronar cows on dry summer pasture
+  src: /images/photographs/blue-sky-red-cattle.jpg
+- title: Red Angus cows in the shade of native trees
+  src: /images/photographs/march-06-059.jpg
+- title: The herd beneath flowering trees
+  src: /images/photographs/p1010928.jpg
+- title: Cows walking up the paddock
+  src: /images/photographs/tronar-cows-750x380.jpg
+- title: Cow and calf
+  src: /images/photographs/cow-and-calf-750x380.jpg
+- title: Red Angus cow, close up
+  src: /images/photographs/p1010938.jpg
+
+# Bulls
+- title: Tronar bulls
+  src: /images/photographs/wa-oct07-1-045.jpg
+- title: Tronar bull
+  src: /images/photographs/bull-281213.jpg
+- title: Yearling bulls for sale, 2016
+  src: /images/photographs/img-0522-1.jpg
+- title: Tronar yearling bull
+  src: /images/photographs/img-0490.jpg
+- title: Tronar bulls in the paddock
+  src: /images/photographs/img-0510.jpg
+- title: Two Tronar bulls
+  src: /images/photographs/img-0547.jpg
+
+# Shows and sales
+- title: Tronar Jeb, Grand Champion Red Angus Bull at the 2014 Perth Royal Show
+  src: /images/photographs/tronar-jeb-p1090577.jpg
+- title: Champion Red Angus steer
+  src: /images/photographs/champion.jpg
+- title: Tronar bulls at the Bandeeka on-property sale
+  src: /images/photographs/bec-6.jpg
+- title: In the show ring
+  src: /images/photographs/glendale.jpg
+- title: Tronar top price, 2013
+  src: /images/photographs/tronar-top-price-2013.jpg
+- title: Tronar G35 with her buyers
+  src: /images/photographs/3lwg35-buyers-p1140840.jpg

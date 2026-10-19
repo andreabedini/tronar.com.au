@@ -1,0 +1,7 @@
+{% component journal_item(post) %}
+<a class="entry{% if post.extra.award | default(value=false) %} entry-award{% endif %}" href="{{ post.path }}">
+<time datetime="{{ post.date }}">{{ post.date | date(format="%B %Y") }}</time>
+<span class="entry-title">{{ post.title }}{% if post.extra.award | default(value=false) %} <span class="sash">Show award</span>{% endif %}</span>
+{% if post.extra.image is defined %}{% set thumb = resize_image(path=post.extra.image, width=480, height=480, op="fit", format="jpg", quality=80) %}<img loading="lazy" src="{{ thumb.url }}" alt="" width="{{ thumb.width }}" height="{{ thumb.height }}">{% endif %}
+</a>
+{% endcomponent journal_item %}

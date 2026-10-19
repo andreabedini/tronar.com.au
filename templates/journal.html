@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Farm journal | {{ config.title }}{% endblock title %}
+{% block content %}
+<section class="journal journal-page wrap">
+<h1>{{ section.title }}</h1>
+<div class="intro">{{ section.content | safe }}</div>
+<div class="entries">{% for post in section.pages %}{{ <journal_item post={post} /> }}{% endfor %}</div>
+</section>
+{% endblock content %}

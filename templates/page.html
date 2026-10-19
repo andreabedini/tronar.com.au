@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock title %}
+{% block content %}
+<article class="article">
+<header class="article-head">
+{% if page.date %}<p class="article-date"><a href="/blog/">Farm journal</a>, <time datetime="{{ page.date }}">{{ page.date | date(format="%-d %B %Y") }}</time>{% if page.extra.award | default(value=false) %} <span class="sash">Show award</span>{% endif %}</p>{% endif %}
+<h1>{{ page.title }}</h1>
+</header>
+{% if page.extra.image is defined %}{% set photo = resize_image(path=page.extra.image, width=1800, height=1400, op="fit", format="jpg", quality=80) %}<img class="article-photo" src="{{ photo.url }}" alt="" width="{{ photo.width }}" height="{{ photo.height }}">{% endif %}
+<div class="prose">{{ page.content | safe }}</div>
+<aside class="article-call">
+<p>Want to know more? Call Ross and Tracy on <a href="tel:{{ config.extra.phone_href }}">{{ config.extra.phone }}</a> or <a href="tel:{{ config.extra.mobile_href }}">{{ config.extra.mobile }}</a>.</p>
+</aside>
+{% if page.lower or page.higher %}<nav class="pager" aria-label="More stories">
+{% if page.lower %}<a href="{{ page.lower.path }}"><span>Newer story</span>{{ page.lower.title }}</a>{% endif %}
+{% if page.higher %}<a class="pager-older" href="{{ page.higher.path }}"><span>Older story</span>{{ page.higher.title }}</a>{% endif %}
+</nav>{% endif %}
+</article>
+{% endblock content %}

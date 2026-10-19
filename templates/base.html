@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ config.title }}{% endblock title %}</title>
+<meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
+<link rel="canonical" href="{% if page is defined %}{{ page.permalink | safe }}{% elif section is defined %}{{ section.permalink | safe }}{% else %}{{ config.base_url | safe }}/{% endif %}">
+<link rel="icon" href="{{ config.extra.favicon }}">
+<link rel="preload" href="/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/literata.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+<a class="brand" href="/" aria-label="Tronar Red Angus home"><img src="{{ config.extra.logo }}" alt="Tronar Red Angus" width="1024" height="159"></a>
+<nav aria-label="Main navigation">{% include "partials/navigation.html" %}</nav>
+<a class="masthead-phone" href="tel:{{ config.extra.phone_href }}">{{ config.extra.phone }}</a>
+</header>
+<main id="main">{% block content %}{% endblock content %}</main>
+<footer class="footer">
+<div class="footer-inner">
+<a class="footer-brand" href="/"><img src="/images/branding/tronar-logo-white-red-jeb.png" alt="Tronar Red Angus" width="1024" height="156" loading="lazy"></a>
+<address>{{ config.extra.contact_names }}<br>{{ config.extra.address_line }}<br>{{ config.extra.locality }}<br><a href="tel:{{ config.extra.phone_href }}">{{ config.extra.phone }}</a> or <a href="tel:{{ config.extra.mobile_href }}">{{ config.extra.mobile }}</a></address>
+<nav aria-label="Footer navigation">{% include "partials/navigation.html" %}</nav>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Photographs | {{ config.title }}{% endblock title %}
+{% block content %}
+<section class="gallery wrap">
+<h1>{{ page.title }}</h1>
+<div class="intro">{{ page.content | safe }}</div>
+{% set photographs = load_data(path="data/photographs.yaml") %}
+<div class="photos">{% for photo in photographs %}
+<figure><a href="{{ photo.src }}">{% set thumb = resize_image(path=photo.src, width=900, height=900, op="fit", quality=80) %}<img loading="lazy" src="{{ thumb.url }}" alt="{{ photo.title }}" width="{{ thumb.width }}" height="{{ thumb.height }}"></a><figcaption>{{ photo.title }}</figcaption></figure>
+{% endfor %}</div>
+</section>
+{% endblock content %}

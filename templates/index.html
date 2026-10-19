@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block content %}
+{% set hero_src = section.extra.hero_image %}
+{% set hero_large = resize_image(path=hero_src, width=2400, height=2400, op="fit", format="jpg", quality=78) %}
+{% set hero_small = resize_image(path=hero_src, width=1200, height=1200, op="fit", format="jpg", quality=78) %}
+<section class="hero">
+<img class="hero-photo" alt="Tronar Red Angus cows under gum trees on dry summer pasture" src="{{ hero_large.url }}" srcset="{{ hero_small.url }} 1200w, {{ hero_large.url }} 2400w" sizes="100vw" width="{{ hero_large.width }}" height="{{ hero_large.height }}" fetchpriority="high">
+<div class="hero-band"><h1>{{ section.extra.hero_title | safe }}</h1></div>
+<div class="hero-aside">
+<p>{{ section.extra.hero_description }}</p>
+<p class="actions"><a class="button" href="tel:{{ config.extra.phone_href }}">Call {{ config.extra.phone }}</a><a href="#cattle">See our cattle</a></p>
+</div>
+</section>
+
+<section class="story wrap">
+<h2>Red Angus since 1976</h2>
+<div class="story-text">{{ section.content | safe }}
+<ul class="further">{% for link in section.extra.story_links %}{% set linked = get_page(path=link.content) %}<li><a href="{{ linked.path }}">{{ link.title }}</a></li>{% endfor %}</ul>
+</div>
+<div class="traits">
+<h3>What we select for</h3>
+<ul>{% for trait in section.extra.traits %}<li>{{ trait }}</li>{% endfor %}</ul>
+</div>
+</section>
+
+<section class="herd" id="cattle">
+<div class="wrap">
+<h2>Our cattle</h2>
+<p class="herd-intro">Every Tronar animal is registered with the Red Angus Society of Australia. Call us to talk about what’s available, or come and see them in the paddock.</p>
+<ul class="lots">{% for item in section.extra.cattle %}
+{% set cattle = get_page(path=item.content) %}
+{% set photo = resize_image(path=item.image, width=800, height=800, op="fit", format="jpg", quality=80) %}
+<li><a class="lot" href="{{ cattle.path }}">
+<img alt="" loading="lazy" src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}">
+<h3>{{ item.title }}</h3>
+<p>{{ cattle.extra.short_description }}</p>
+</a></li>
+{% endfor %}</ul>
+</div>
+</section>
+
+<section class="land wrap">
+{% set poster = resize_image(path="/images/photographs/red-angus-australia-promo.jpg", width=1280, height=720, op="fit", format="jpg", quality=80) %}
+<figure class="film">
+<a class="film-poster" href="https://www.youtube.com/watch?v=rTaXqzdYU3M" data-youtube="rTaXqzdYU3M">
+<img alt="" loading="lazy" src="{{ poster.url }}" width="{{ poster.width }}" height="{{ poster.height }}">
+<span class="film-play"><svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16"><path d="M3 1.5v13L14 8z" fill="currentColor"/></svg>Play the film</span>
+</a>
+<figcaption>Our cows in Edward Grant’s film for Red Angus Australia.</figcaption>
+</figure>
+<div>
+<h2>At home on sandy ground</h2>
+<p>We select our cows so they hold their condition on our light, sandy Western Australian soil. That makes them hardy enough for very different country. Tronar bulls now work from the Gascoyne and the Pilbara to the South Coast, and Tronar bloodlines have gone to Queensland, New South Wales, Victoria and China.</p>
+<p><a href="/our-story-on-why-we-choose-red-angus/">Why we choose Red Angus</a></p>
+</div>
+</section>
+<script>
+/* Load YouTube only when someone chooses to play the film. */
+document.querySelectorAll("[data-youtube]").forEach(function (link) {
+  link.addEventListener("click", function (event) {
+    event.preventDefault();
+    var frame = document.createElement("iframe");
+    frame.src = "https://www.youtube-nocookie.com/embed/" + link.dataset.youtube + "?autoplay=1&rel=0";
+    frame.title = "Red Angus Australia film by Edward Grant";
+    frame.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    frame.allowFullscreen = true;
+    link.replaceWith(frame);
+    frame.focus();
+  });
+});
+</script>
+
+<section class="journal wrap">
+<div class="journal-head"><h2>From the farm journal</h2><a href="/blog/">All stories</a></div>
+<div class="entries">{% for content_path in section.extra.featured %}{% set post = get_page(path=content_path) %}{{ <journal_item post={post} /> }}{% endfor %}</div>
+</section>
+
+<section class="visit" id="contact">
+<div class="wrap visit-grid">
+<div>
+<h2>Come and see the cattle</h2>
+<p>Visits are welcome all year. Give Ross and Tracy a call to arrange a time.</p>
+</div>
+<div class="visit-details">
+<p class="phones"><a href="tel:{{ config.extra.phone_href }}">{{ config.extra.phone }}</a><a href="tel:{{ config.extra.mobile_href }}">{{ config.extra.mobile }}</a></p>
+<p>{{ config.extra.contact_names }}<br>{{ config.extra.address_line }}<br>{{ config.extra.locality }}</p>
+<p><a href="{{ config.extra.maps_url }}">Directions on Google Maps</a><br><a class="email" href="mailto:{{ config.extra.email }}">{{ config.extra.email }}</a></p>
+</div>
+</div>
+</section>
+{% endblock content %}
