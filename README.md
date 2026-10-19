@@ -53,13 +53,15 @@ zola check --skip-external-links
 zola build
 ```
 
-The complete website is generated in `dist/`. Upload the **contents** of `dist/` into the domain's web directory on your static host. The host does not need Zola, PHP or a database.
+The complete website is generated in `dist/`.
 
-Before replacing WordPress on DreamHost, keep the existing files and database backup and confirm the correct web directory for `tronar.com.au`. Do not delete the WordPress installation until the replacement has been checked on the host.
+## Publish the website
 
-For a different domain, change `base_url` in `config.toml` before building, or use `zola build --base-url https://your-domain.example`. Deploy at the domain root; navigation and image URLs start with `/`. Resized images use absolute URLs from `base_url`, so to preview a build locally use `zola serve`, or `zola build --base-url http://localhost:PORT`.
+The website is hosted on GitHub Pages. Every push to `main` runs `.github/workflows/pages.yml`, which checks and builds the site with the Zola version from `mise.toml` and publishes `dist/` to https://tronar.com.au. To republish without a change, run the workflow by hand from the repository's Actions tab.
 
-The retained `.openai/hosting.json` identifies the existing private Sites project and declares `dist/` as its static directory. It is not needed for DreamHost uploads. Publication still needs the Sites source workflow; a local build does not publish anything.
+The custom domain is set in the repository's Pages settings, not in a `CNAME` file. The DNS for `tronar.com.au` is at Porkbun; email is at Fastmail, so leave the `MX` and `TXT` records alone when changing the web records.
+
+For a different domain, change `base_url` in `config.toml`, or use `zola build --base-url https://your-domain.example`. Deploy at the domain root; navigation and image URLs start with `/`. Resized images use absolute URLs from `base_url`, so to preview a build locally use `zola serve`, or `zola build --base-url http://localhost:PORT`.
 
 ## Content to review before launch
 
